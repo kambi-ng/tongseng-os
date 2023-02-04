@@ -65,13 +65,13 @@ $(BIN_PATH):
 $(BIN_PATH)/$(OS_NAME): $(OBJ_FILES)
 	$(LD) -o $@ $^ $(LDFLAG)
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c include/limine.h
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	$(CC) -o $@ -c $< $(CFLAGS) -I$(SRC_PATH) $(INCLUDES)
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.asm
 	nasm $(NASMFLAGS) -o $@ $<
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.S include/limine.h
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.S
 	$(CC) -o $@ -c $< $(CFLAGS) -I$(SRC_PATH) $(INCLUDES)
 
 -include $(DEP_FILES)
@@ -99,7 +99,6 @@ barebones.iso: all limine
 run: barebones.iso
 	qemu-system-x86_64 -M q35 -m 2G -cdrom barebones.iso -boot d
 
-.PHONY: inc
 include:
 	mkdir -p include
 
