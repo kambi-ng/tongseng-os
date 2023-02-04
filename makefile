@@ -3,7 +3,7 @@ VERSION=0.1
 
 CC=gcc
 LD=ld
-RM=/usr/bin/rm -f
+RM=/usr/bin/env rm -f
 
 SRC_PATH=src
 OBJ_PATH=obj
