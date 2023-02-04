@@ -4,3 +4,5 @@
 /barebones.iso
 /include/
 /limine/
+compile_commands.json
+.cache/

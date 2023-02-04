@@ -95,6 +95,7 @@ barebones.iso: all limine
 	limine/limine-deploy $@
 	rm -rf iso_mount
 
+.PHONY: run
 run: barebones.iso
 	qemu-system-x86_64 -M q35 -m 2G -cdrom barebones.iso -boot d
 
@@ -108,3 +109,7 @@ include/limine.h: include
 .PHONY: clean
 clean:
 	rm -rf $(OBJ_PATH) $(BIN_PATH) $(INC_PATHS) barebones.iso
+
+.PHONY: lsp
+lsp: clean
+	bear -- make all
