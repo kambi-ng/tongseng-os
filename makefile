@@ -93,7 +93,7 @@ barebones.iso: all limine
 		-efi-boot-part --efi-boot-image --protective-msdos-label \
 		iso_mount -o $@
 	limine/limine-deploy $@
-	rm -rf iso_mount
+	$(RM) -rf iso_mount
 
 .PHONY: run
 run: barebones.iso
@@ -107,7 +107,7 @@ include/limine.h: include
 
 .PHONY: clean
 clean:
-	rm -rf $(OBJ_PATH) $(BIN_PATH) $(INC_PATHS) barebones.iso
+	$(RM) -rf $(OBJ_PATH) $(BIN_PATH) $(INC_PATHS) barebones.iso
 
 .PHONY: lsp
 lsp: clean
